@@ -70,6 +70,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // se nenhum dos estados acima são correspondidos, use isso como o fallback
-  $urlRouterProvider.otherwise('/tab/publicar');
+  $urlRouterProvider.otherwise('/tab/fiscalizar');
 
 });

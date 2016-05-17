@@ -1,6 +1,29 @@
 angular.module('starter.controllers', [])
 
-.controller('PublicarCtrl', function($scope) {})
+.controller('PublicarCtrl', function($scope,Publicacoes) {
+    
+    
+    //var publicacoes = new getPublicacao();
+    //$scope.lista = publicacoes.publicacoes;
+
+    //$scope.publicaProblem = function(publicar){
+      //publicar.id = $scope.lista.length;
+      //publicar.likes = 0;
+      //publicacoes.addPublicacao(publicar);
+      //console.log(publicar);
+    //};
+
+    $scope.publicacoes = Publicacoes.all();
+    $scope.addProblem = function(publicar){
+      publicar.id = $scope.publicacoes.length;
+      publicar.likes = 0;
+      console.log(publicar);
+      Publicacoes.add($scope.publicar);
+    };
+    //MAIN.add($scope.publicar,function(){});
+
+
+})
 
 .controller('FiscalizarCtrl', function($scope, Publicacoes) {
   // Com a nova view cache no Ionic, Controllers só são chamados quando eles são 
@@ -12,10 +35,52 @@ angular.module('starter.controllers', [])
   //});
 
   $scope.publicacoes = Publicacoes.all();
+  console.log($scope.publicacoes);
+  //var publicacoes = new getPublicacao();
+  //$scope.publicacoes = publicacoes.publicacoes;
+
+  $scope.plusOne = function(index) {
+    $scope.publicacoes[index].likes += 1;
+  };
 })
 
-.controller('PublicacaoDetailCtrl', function($scope, $stateParams, Publicacoes) {
+.controller('PublicacaoDetailCtrl', function($scope,$ionicPopup ,$stateParams, Publicacoes) {
   $scope.publicacao = Publicacoes.get($stateParams.publicacaoId);
+  //console.log($scope.publicacao);
+  var comment = new getComentario();
+  $scope.comentarios = comment.comentarios;
+
+  function showPopup(comentar) {
+    $scope.data = {};
+    $scope.data.newComment = "";
+    $ionicPopup.show({
+      template: '<input type="text" placeholder="Comentario" autofocus="true" ng-model="data.newComment">',
+    title: 'Escreva seu Comentário',
+    subTitle: 'Realize seu comentário',
+    scope: $scope,
+    buttons: [
+      { text: 'Cancel' },
+      {
+        text: '<b>OK</b>',
+        type: 'button-positive',
+        onTap: function(e){
+          comentar.messagem = $scope.data.newComment;
+          comentar.id = $scope.publicacao.id;
+          //comment.addComentario(comentar);
+          console.log(comentar.messagem);
+        }
+          }
+    ]
+    });
+  };
+
+  $scope.addComentario = function(){
+     var comentar = {};
+     showPopup(comentar);
+     comment.addComentario(comentar);
+     comentar = {};
+     console.log(comentar);
+    };
 })
 
 .controller('AtividadeCtrl', function($scope) {

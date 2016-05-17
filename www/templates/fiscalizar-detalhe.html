@@ -4,9 +4,8 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{publicacao.nome}}">
+<ion-view view-title="{{publicacao.nome}}" class="header">
   <ion-content>
-
     <div class="item item-avatar">
       <img src="{{publicacao.face}}">
       <h2>{{publicacao.nome}}</h2>
@@ -14,15 +13,18 @@
       <img class="full-image" src="{{publicacao.foto}}">
       <p>
         {{publicacao.descricao}}
-      </p>
+      </p><br>
+      <div class="scroll">
+        <h3><strong>Comentários</strong></h3>
+        <div  ng-show="publicacao.id == comment.id" ng-repeat="comment in comentarios track by $index">
+          <p>"{{comment.messagem}}"</p><br>
+        </div>
+      </div>
     </div>
-    <div class="list">
-      <label class="item item-input">
-        <textarea placeholder="Digite seu comentário"></textarea>
-      </label>
-      <button class="button button-full button-positive">
+    <div name="comment" class="list"> <!-- pegar o que foi escrito e listar -->
+      <button ng-click="addComentario(comentar)" class="button button-full button-positive">
         Comentar
-      </button>
+      </button> <!-- Listar depois do button os comentarios-->
   </ion-content>
     </div>
 </ion-view>

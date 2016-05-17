@@ -1,4 +1,4 @@
-<ion-view view-title="Fiscalizar">
+<ion-view view-title="Fiscalizar" class="header">
   <ion-content class="padding">
     <div class="list list-inset">
       <label class="item item-input">
@@ -19,8 +19,8 @@
           {{publicacao.descricao}}
         </p>
         <p>
-          <a href="#/tab/fiscalizar" class="subdued">1 Apoiador</a>
-          <a href="#/tab/fiscalizar/{{publicacao.id}}" class="subdued">5 Comentários</a>
+          <a href="#/tab/fiscalizar" class="subdued" ng-click= "plusOne($index)">{{publicacao.likes}} Apoiador</a>
+          <a href="#/tab/fiscalizar/{{publicacao.id}}" class="subdued">Comentários</a>
           <a href="#/tab/fiscalizar" class="subdued">Divulgar</a>
         </p>
       </div>

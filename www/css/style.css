@@ -1,1 +1,43 @@
 /* Vazio. Adicione seu próprio CSS se a gosto */
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+	color:#444;
+	font-family: "Trebuchet MS";
+}
+
+.header{
+	background-color:#ebebeb;
+}
+
+.bar.bar-stable {
+	background-color: #ad1737;
+}
+
+.bar.bar-stable .title{
+	color: white;
+}
+
+
+.button.button-positive{
+	background-color: #ad1737;
+}
+.button.button-positive.activated{
+	background-color: #ad1737;
+}
+
+button.disabled, .button[disabled]{
+	opacity: inherit;
+}
+
+.card, .list-inset {
+	border-radius: 10px;
+}
+
+.bar .button.back-button, .bar button.back-button {
+	background:transparent;
+	color: white;
+}
+
+.item p {
+	white-space: normal;
+}

@@ -1,10 +1,5 @@
-angular.module('starter.services', [])
-
-.factory('Publicacoes', function() {
-  // Pode usar um recurso aqui que retorna uma array JSON
-
-  // Alguns dados de testes falso
-  var publicacoes = [{
+function getPublicacao() {
+	this.publicacoes = [{
     id: 0,
     nome: 'Ben Sparrow',
     data: "3 de maio de 2016",
@@ -52,25 +47,14 @@ angular.module('starter.services', [])
     face: 'img/mike.png',
     foto: 'img/photo/12976678_1114384848619243_270315244_n.jpg',
     likes: 0
-  }];
-
-  return {
-    all: function() {
-      return publicacoes;
-    },
-    get: function(publicacaoId) {
-      for (var i = 0; i < publicacoes.length; i++) {
-        if (publicacoes[i].id === parseInt(publicacaoId)) {
-          return publicacoes[i];
-        }
-      }
-      return null;
-    },
-    add: function(obj){
-      publicacoes.push(obj);
-    }
-  };
-});
+  }];;
 
 
+  this.addPublicacao = function(publicar){
+
+  	this.publicacoes.push(publicar);
+
+  }
+
+}
 
